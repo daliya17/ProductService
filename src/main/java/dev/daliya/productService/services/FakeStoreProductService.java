@@ -4,16 +4,8 @@ import dev.daliya.productService.dtos.FakeStoreProductDto;
 import dev.daliya.productService.dtos.GenericProductDto;
 import dev.daliya.productService.exeptions.NotFoundException;
 import dev.daliya.productService.thirdPartyClients.productService.fakeStore.FakeStoreProductServiceClient;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Primary;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RequestCallback;
-import org.springframework.web.client.ResponseExtractor;
-import org.springframework.web.client.RestTemplate;
-import org.springframework.core.ParameterizedTypeReference;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -84,4 +76,6 @@ public class FakeStoreProductService implements ProductService {
         }
         return convertFakeStoreProductIntoGenericProduct(fakeStoreProductDto);
     }
+
+
 }
