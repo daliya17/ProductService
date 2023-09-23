@@ -1,7 +1,6 @@
 package dev.daliya.productService.controllers;
 
 import dev.daliya.productService.dtos.CategoryDto;
-import dev.daliya.productService.models.Category;
 import dev.daliya.productService.services.CategoryService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

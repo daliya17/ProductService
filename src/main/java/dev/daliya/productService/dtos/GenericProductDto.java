@@ -1,6 +1,5 @@
 package dev.daliya.productService.dtos;
 
-import dev.daliya.productService.models.Category;
 import lombok.Getter;
 import lombok.Setter;
 
