@@ -5,17 +5,18 @@ import dev.daliya.productService.exeptions.NotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 
 public interface ProductService {
 
-    GenericProductDto getProductById(Long id) throws NotFoundException;
+    GenericProductDto getProductById(UUID id) throws NotFoundException;
 
     GenericProductDto createProduct(GenericProductDto product);
 
     List<GenericProductDto> getAllProducts();
 
-    GenericProductDto deleteProductById(Long id) throws NotFoundException;
+    GenericProductDto deleteProductById(UUID id) throws NotFoundException;
 
-    GenericProductDto updateProductById(GenericProductDto product, Long id) throws NotFoundException;
+    GenericProductDto updateProductById(GenericProductDto product, UUID id) throws NotFoundException;
 }

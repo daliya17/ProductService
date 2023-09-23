@@ -22,7 +22,7 @@ public class ProductController {
 
     private ProductService productService;
 
-    public ProductController(ProductService productService) {
+    public ProductController(@Qualifier("selfProductService") ProductService productService) {
         this.productService = productService;
     }
 
@@ -32,17 +32,17 @@ public class ProductController {
     }
 
     @GetMapping("{id}")
-    public GenericProductDto getProductById(@PathVariable("id") Long id) throws NotFoundException {
+    public GenericProductDto getProductById(@PathVariable("id") UUID id) throws NotFoundException {
         return productService.getProductById(id);
     }
 
     @DeleteMapping("{id}")
-    public GenericProductDto deleteProductById(@PathVariable("id") Long id) throws NotFoundException {
+    public GenericProductDto deleteProductById(@PathVariable("id") UUID id) throws NotFoundException {
         return productService.deleteProductById(id);
     }
 
     @PutMapping("{id}")
-    public GenericProductDto updateProductById(@PathVariable("id") Long id, @RequestBody GenericProductDto product) throws NotFoundException {
+    public GenericProductDto updateProductById(@PathVariable("id") UUID id, @RequestBody GenericProductDto product) throws NotFoundException {
         return productService.updateProductById(product, id);
     }
 

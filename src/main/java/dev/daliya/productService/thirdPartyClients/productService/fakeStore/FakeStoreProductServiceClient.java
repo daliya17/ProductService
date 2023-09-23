@@ -1,6 +1,5 @@
 package dev.daliya.productService.thirdPartyClients.productService.fakeStore;
 
-import dev.daliya.productService.dtos.FakeStoreProductDto;
 import dev.daliya.productService.dtos.GenericProductDto;
 import dev.daliya.productService.exeptions.NotFoundException;
 import org.springframework.beans.factory.annotation.Value;
@@ -14,6 +13,7 @@ import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class FakeStoreProductServiceClient {
@@ -39,7 +39,7 @@ public class FakeStoreProductServiceClient {
         this.specificProductRequestUrl = fakeStoreApiUrl + fakeStoreProductsApiPath + "/{id}";
     }
 
-    public FakeStoreProductDto getProductById(Long id) throws NotFoundException {
+    public FakeStoreProductDto getProductById(UUID id) throws NotFoundException {
         RestTemplate restTemplate = restTemplateBuilder.build();
         ResponseEntity<FakeStoreProductDto> response = restTemplate.getForEntity(specificProductRequestUrl, FakeStoreProductDto.class, id);
 
@@ -66,7 +66,7 @@ public class FakeStoreProductServiceClient {
         return products;
     }
 
-    public FakeStoreProductDto deleteProductById(Long id) throws NotFoundException {
+    public FakeStoreProductDto deleteProductById(UUID id) throws NotFoundException {
         RestTemplate restTemplate = restTemplateBuilder.build();
         RequestCallback requestCallback = restTemplate.acceptHeaderRequestCallback(FakeStoreProductDto.class);
         ResponseExtractor<ResponseEntity<FakeStoreProductDto>> responseExtractor = restTemplate.responseEntityExtractor(FakeStoreProductDto.class);
@@ -78,7 +78,7 @@ public class FakeStoreProductServiceClient {
     }
 
 
-    public FakeStoreProductDto updateProductById(GenericProductDto product, Long id) throws NotFoundException {
+    public FakeStoreProductDto updateProductById(GenericProductDto product, UUID id) throws NotFoundException {
         RestTemplate restTemplate = restTemplateBuilder.build();
         RequestCallback requestCallback = restTemplate.httpEntityCallback(product, FakeStoreProductDto.class);
         ResponseExtractor<ResponseEntity<FakeStoreProductDto>> responseExtractor = restTemplate.responseEntityExtractor(FakeStoreProductDto.class);

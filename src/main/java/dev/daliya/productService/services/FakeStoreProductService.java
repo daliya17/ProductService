@@ -1,16 +1,16 @@
 package dev.daliya.productService.services;
 
-import dev.daliya.productService.dtos.FakeStoreProductDto;
 import dev.daliya.productService.dtos.GenericProductDto;
 import dev.daliya.productService.exeptions.NotFoundException;
+import dev.daliya.productService.thirdPartyClients.productService.fakeStore.FakeStoreProductDto;
 import dev.daliya.productService.thirdPartyClients.productService.fakeStore.FakeStoreProductServiceClient;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
-@Primary
 @Service("fakeStoreProductService")
 public class FakeStoreProductService implements ProductService {
 
@@ -21,7 +21,7 @@ public class FakeStoreProductService implements ProductService {
     }
 
     @Override
-    public GenericProductDto getProductById(Long id) throws NotFoundException {
+    public GenericProductDto getProductById(UUID id) throws NotFoundException {
         FakeStoreProductDto fakeStoreProductDto = fakeStoreProductServiceClient.getProductById(id);
         if (fakeStoreProductDto == null) {
             throw new NotFoundException("Product with id: " + id + " doesn't exist");
@@ -59,7 +59,7 @@ public class FakeStoreProductService implements ProductService {
     }
 
     @Override
-    public GenericProductDto deleteProductById(Long id) throws NotFoundException {
+    public GenericProductDto deleteProductById(UUID id) throws NotFoundException {
         FakeStoreProductDto fakeStoreProductDto = fakeStoreProductServiceClient.deleteProductById(id);
         if (fakeStoreProductDto == null) {
             throw new NotFoundException("Product with id: " + id + " doesn't exist");
@@ -69,7 +69,7 @@ public class FakeStoreProductService implements ProductService {
 
 
     @Override
-    public GenericProductDto updateProductById(GenericProductDto product, Long id) throws NotFoundException {
+    public GenericProductDto updateProductById(GenericProductDto product, UUID id) throws NotFoundException {
         FakeStoreProductDto fakeStoreProductDto = fakeStoreProductServiceClient.updateProductById(product, id);
         if (fakeStoreProductDto == null) {
             throw new NotFoundException("Product with id: " + id + " doesn't exist");
