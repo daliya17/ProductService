@@ -2,7 +2,6 @@ package dev.daliya.productService.services;
 
 import dev.daliya.productService.dtos.GenericProductDto;
 import dev.daliya.productService.exeptions.NotFoundException;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.UUID;

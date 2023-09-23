@@ -4,7 +4,6 @@ import dev.daliya.productService.dtos.GenericProductDto;
 import dev.daliya.productService.exeptions.NotFoundException;
 import dev.daliya.productService.thirdPartyClients.productService.fakeStore.FakeStoreProductDto;
 import dev.daliya.productService.thirdPartyClients.productService.fakeStore.FakeStoreProductServiceClient;
-import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -14,7 +13,7 @@ import java.util.UUID;
 @Service("fakeStoreProductService")
 public class FakeStoreProductService implements ProductService {
 
-    private FakeStoreProductServiceClient fakeStoreProductServiceClient;
+    private final FakeStoreProductServiceClient fakeStoreProductServiceClient;
 
     public FakeStoreProductService(FakeStoreProductServiceClient fakeStoreProductServiceClient) {
         this.fakeStoreProductServiceClient = fakeStoreProductServiceClient;
